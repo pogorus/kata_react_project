@@ -1,0 +1,105 @@
+// {
+//     "env": {
+//         "browser": true,
+//         "es6": true,
+//         "node": true
+//     },
+//     "parser": "@babel/eslint-parser",
+//     "parserOptions": {
+//         "requireConfigFile": false,
+//         "ecmaVersion": 2018,
+//         "ecmaFeatures": {
+//             "jsx": true
+//         },
+//         "sourceType": "module",
+//         "babelOptions": {
+//             "presets": ["@babel/preset-react"]
+//         }
+//       },
+//     "extends": ["airbnb"],
+//     "rules": {
+//         "import/no-named-as-default": "off",
+//         "import/no-named-as-default-member": "off",
+//         "react/jsx-filename-extension": "off",
+//         "react/forbid-prop-types": "off",
+//         "object-curly-newline": "off",
+//         "react/prefer-stateless-function": "off",
+//         "react/state-in-constructor": "off",
+//         "react/static-property-placement": "off",
+//         "no-plusplus": "off",
+//         "no-param-reassign": "off",
+//         "no-return-assign": "off",
+//         "consistent-return": "off",
+//         "jsx-a11y/no-autofocus": "off",
+//         "react/jsx-props-no-spreading": "off",
+//         "max-len": ["error", 150],
+//         "jsx-a11y/control-has-associated-label": "off",
+//         "jsx-a11y/label-has-associated-control": "off"
+//     }
+// }
+
+{
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "ignorePatterns": ["node_modules", "dist", "build"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "parser": "@babel/eslint-parser",
+    // "parser": "babel-eslint",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module",
+      "babelOptions": {
+        "presets": ["@babel/preset-react"]
+      }
+    },
+    "plugins": ["react", "prettier", "import"],
+    "rules": {
+      "indent": ["error", 2],
+      "prettier/prettier": "error",
+      "linebreak-style": [0, "unix"],
+      "quotes": ["error", "single"],
+      "semi": [2, "always"],
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": 0,
+      "import/no-unresolved": [2, { "caseSensitive": false }],
+      "import/namespace": "off",
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "import/order": [
+        2,
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "newlines-between": "always"
+        }
+      ]
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"],
+          "moduleDirectory": ["node_modules", "src/"]
+        }
+      }
+    }
+  }
