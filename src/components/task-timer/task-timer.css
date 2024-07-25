@@ -1,0 +1,31 @@
+.timer {
+	font-size: 13px;
+	color: gray;
+    flex-shrink: 0;
+}
+
+.icon-pause,
+.icon-play {
+	font-size: 18px;
+	width: 18px;
+	height: 10px;
+    top: 0;
+    margin: 0;
+	width: 30px;
+	height: 40px;
+	color: #cc9a9a;
+	transition: color 0.2s ease-out;
+	cursor: pointer;
+}
+
+.icon-play {
+	font-size: 15px;
+}
+
+.icon-pause:after {
+	content: '⏸';
+}
+
+.icon-play:after {
+	content: '▶';
+}

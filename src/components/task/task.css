@@ -50,6 +50,8 @@ label {
 label .created {
 	font-size: 13px;
 	color: gray;
+	flex-shrink: 0;
+	padding-left: 5px;
 }
 
 label .description {
@@ -74,7 +76,7 @@ label .description {
 	height: 40px;
 	font-size: 34px;
 	color: #cc9a9a;
-	margin: auto 0 11px;
+	margin: auto 0 17px;
 	transition: color 0.2s ease-out;
 	cursor: pointer;
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { formatDistanceToNow } from 'date-fns';
 
 import './task.css';
+import TaskTimer from '../task-timer/task-timer';
 
 export default class Task extends Component {
   static propTypes = {
@@ -45,6 +46,7 @@ export default class Task extends Component {
           <input onChange={onToggleDone} className="toggle" type="checkbox" />
           <label>
             <span className="description">{label}</span>
+            <TaskTimer />
             <span className="created">{formatDistanceToNow(createdAt, { includeSeconds: true })}</span>
           </label>
           <button type="button" className="icon icon-edit" onClick={onEditing} />
