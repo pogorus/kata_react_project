@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './task-timer.css';
 
-export default class TaskTimer extends Component {
-  state = {
-    timer: 0,
-  };
+function TaskTimer() {
+  const [timerStatus, setTimerStatus] = useState(false);
+  const [timer, setTimer] = useState(0);
 
-  timerFormat = (timer) => {
+  const timerFormat = (timer) => {
     let minutes = Math.floor(timer / 60);
     let seconds = timer % 60;
     minutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -15,33 +14,29 @@ export default class TaskTimer extends Component {
     return `${minutes}:${seconds}`;
   };
 
-  updateTimer = () => {
-    this.setState(({ timer }) => {
-      return {
-        timer: timer + 1,
-      };
-    });
+  const startTimer = () => {
+    setTimerStatus(() => true);
   };
 
-  startTimer = () => {
-    this.interval = setInterval(this.updateTimer, 1000);
+  const stopTimer = () => {
+    setTimerStatus(false);
   };
 
-  stopTimer = () => {
-    clearInterval(this.interval);
-  };
+  useEffect(() => {
+    if (!timerStatus) return;
+    const interval = setInterval(() => {
+      setTimer((t) => t + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timerStatus]);
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  render() {
-    return (
-      <span className="timer">
-        <button className="icon-play" onClick={this.startTimer}></button>
-        <button className="icon-pause" onClick={this.stopTimer}></button>
-        {this.timerFormat(this.state.timer)}
-      </span>
-    );
-  }
+  return (
+    <span className="timer">
+      <button className="icon-play" onClick={startTimer}></button>
+      <button className="icon-pause" onClick={stopTimer}></button>
+      {timerFormat(timer)}
+    </span>
+  );
 }
+
+export default TaskTimer;
